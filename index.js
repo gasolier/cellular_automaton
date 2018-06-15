@@ -64,7 +64,7 @@ function progress() {
         for (let x = 0; x < w; x++) {
             let c = count_neighbours(y, x);
             if (backendTable[y][x] == 1) {
-                if (survival_rules.overPopCount.indexOf(c) != -1 || survival_rules.starvationCount.indexOf(c) != -1) {
+                if (survival_rules.surviveCount.indexOf(c) == -1) {
                     change_states.push([y, x]);
                 }
             } else {
@@ -97,8 +97,7 @@ function fillRandomly() {
 
 let survival_rules = {
     birthCount : [3],
-    overPopCount : [4,5,6,7,8],
-    starvationCount : [0,1]
+    surviveCount : [2,3]
 }
 
 let backendTable = [];
@@ -132,21 +131,13 @@ window.onkeydown = function(ev) {
     }
 }
 
-document.getElementById('overpop').onchange = function(ev) {
-    let values = document.getElementById('overpop').value.split(',');
+document.getElementById('survive').onchange = function(ev) {
+    let values = document.getElementById('survive').value.split(',');
     let new_rule = [];
     for (val of values) {
         new_rule.push(parseInt(val));
     }
-    survival_rules.overPopCount = new_rule;
-}
-document.getElementById('starve').onchange = function(ev) {
-    let values = document.getElementById('starve').value.split(',');
-    let new_rule = [];
-    for (val of values) {
-        new_rule.push(parseInt(val));
-    }
-    survival_rules.starvationCount = new_rule;
+    survival_rules.surviveCount = new_rule;
 }
 document.getElementById('birth').onchange = function(ev) {
     let values = document.getElementById('birth').value.split(',');
