@@ -86,7 +86,7 @@ function fillRandomly() {
     for (let y = 0; y < h; y++) {
         for (let x = 0; x < w; x++) {
             backendTable[y][x] = 0;
-            if (Math.random() > 0.5) {
+            if (Math.random() > (1 - wallChance)) {
                 change_state(y, x);
             } else {
                 document.getElementById(y + '|' + x).style.setProperty('background-color', "white");
@@ -103,6 +103,7 @@ let survival_rules = {
 let backendTable = [];
 let h = 50;
 let w = 50;
+let wallChance = 0.5;
 
 for (let i = 0; i < h; i++) {
     let row = document.createElement('tr');
@@ -146,4 +147,8 @@ document.getElementById('birth').onchange = function(ev) {
         new_rule.push(parseInt(val));
     }
     survival_rules.birthCount = new_rule;
+}
+document.getElementById('wall-chance-slider').onchange = function (ev) {
+    wallChance = parseFloat(document.getElementById('wall-chance-slider').value);
+    document.getElementById('wall-chance').innerHTML = Math.floor(wallChance * 100) + "%";
 }
