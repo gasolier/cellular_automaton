@@ -1,0 +1,33 @@
+#main-screen {
+    position: absolute;
+
+    left: 0.35%;
+
+    width: 99%;
+    height: 97%;
+
+    border: 2px solid black;
+}
+
+input {
+    width: 94%;
+}
+
+#inputs {
+    position: absolute;
+    
+    top: 0%;
+    left: 80.5%;
+
+    width: 19%;
+}
+
+#cell-table {
+    width: 80%;
+    height: 100%;
+}
+
+.cell {
+    border: 1px solid green;
+    cursor: pointer;
+}
