@@ -12,7 +12,7 @@ function mobileCheck() {
 
 function change_state(y, x) {
     backendTable[y][x] = backendTable[y][x] == 1 ? 0 : 1;
-    document.getElementById(y + '|' + x).style.setProperty('background-color', backendTable[y][x] == 1 ? 'green' : 'white');
+    document.getElementById(y + '|' + x).style.setProperty('background-color', backendTable[y][x] == 1 ? ' #f2784e' : '#474d69');
 }
 
 function count_neighbours(y, x) {
@@ -97,7 +97,7 @@ function fillRandomly() {
             if (Math.random() > (1 - wallChance)) {
                 change_state(y, x);
             } else {
-                document.getElementById(y + '|' + x).style.setProperty('background-color', "white");
+                document.getElementById(y + '|' + x).style.setProperty('background-color', "#474d69");
             }
         }
     }
@@ -167,14 +167,55 @@ if (mobileCheck() == true) {
     // if not on mobile do everything via keyboard
     window.onkeydown = function(ev) {
         if (ev.keyCode == "32") {
-            progress();
+            if (running) {
+                document.getElementById('space-running').innerHTML = "Press space to start.";
+                clearInterval(interval_ref);
+                running = false;
+            } else {
+                document.getElementById('space-running').innerHTML = "Press space to stop.";
+                interval_ref = setInterval(progress, 250);
+                running = true;
+            }
         } else if (ev.keyCode == "82") {
+            if (running) {
+                document.getElementById('space-running').innerHTML = "Press space to start.";
+                clearInterval(interval_ref);
+                running = false;
+            }
             fillRandomly();
+        } else if (ev.keyCode == "83") {
+            if (running) {
+                document.getElementById('space-running').innerHTML = "Press space to start.";
+                clearInterval(interval_ref);
+                running = false;
+            }
+            progress();
         }
     }
 }
 
+document.getElementById('survive').onfocus = function(ev) {
+    console.log('active');
+    if (running) {
+        document.getElementById('space-running').innerHTML = "Press space to start.";
+        clearInterval(interval_ref);
+        running = false;
+    }
+}
+document.getElementById('birth').onfocus = function(ev) {
+    if (running) {
+        document.getElementById('space-running').innerHTML = "Press space to start.";
+        clearInterval(interval_ref);
+        running = false;
+    }
+}
+
 document.getElementById('survive').onchange = function(ev) {
+    if (running) {
+        document.getElementById('space-running').innerHTML = "Press space to start.";
+        clearInterval(interval_ref);
+        running = false;
+    }
     let values = document.getElementById('survive').value.split(',');
     let new_rule = [];
     for (val of values) {
@@ -183,6 +224,11 @@ document.getElementById('survive').onchange = function(ev) {
     survival_rules.surviveCount = new_rule;
 }
 document.getElementById('birth').onchange = function(ev) {
+    if (running) {
+        document.getElementById('space-running').innerHTML = "Press space to start.";
+        clearInterval(interval_ref);
+        running = false;
+    }
     let values = document.getElementById('birth').value.split(',');
     let new_rule = [];
     for (val of values) {

@@ -1,22 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+    font-family: "Ubuntu";
+    background-color: #dfdfdf;
+}
+
 #main-screen {
     position: absolute;
 
-    left: 0.35%;
+    left: 0%;
+    top: 0%;
 
     width: 99%;
-    height: 97%;
-
-    border: 2px solid black;
+    height: 100%;
 }
 
 input {
     width: 94%;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 #inputs {
     position: fixed;
     
-    top: 5%;
+    top: 0.25%;
     left: 80%;
 
     width: 19%;
@@ -42,6 +52,8 @@ input {
 }
 
 .cell {
-    border: 1px solid green;
+    background-color: #474d69;
+    
     cursor: pointer;
+    border: 1px solid #202640;
 }
