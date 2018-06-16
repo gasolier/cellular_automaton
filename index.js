@@ -18,6 +18,39 @@ function change_state(y, x) {
 function count_neighbours(y, x) {
     let count = 0;
 
+    let y_1 = y - 1 > - 1 ? y - 1 : backendTable.length + (y - 1);
+    let x_1 = x - 1 > - 1 ? x - 1 : backendTable[y].length + (x - 1);
+
+    let y_2 = y + 1 < backendTable.length ? y + 1 : backendTable.length - (y + 1);
+    let x_2 = x + 1 < backendTable.length ? x + 1 : backendTable.length - (x + 1);
+
+    if (backendTable[y_1][x] == 1) {
+        count++;
+    }
+    if (backendTable[y][x_1] == 1) {
+        count++;
+    }
+    if (backendTable[y_2][x] == 1) {
+        count++;
+    } 
+    if (backendTable[y][x_2] == 1) {
+        count++;
+    }
+    if (backendTable[y_1][x_1] == 1) {
+        count++;
+    }
+    if (backendTable[y_1][x_2] == 1) {
+        count++;
+    }
+    if (backendTable[y_2][x_1] == 1) {
+        count++;
+    }
+    if (backendTable[y_2][x_2] == 1) {
+        count++;
+    }
+    
+
+    /*
     if (y - 1 > -1) {
         if (backendTable[y - 1][x] == 1) {
             count++;
@@ -60,7 +93,7 @@ function count_neighbours(y, x) {
         if (backendTable[y + 1][x + 1] == 1) {
             count++;
         }
-    }
+    }*/
 
     return count;
 }
@@ -109,8 +142,8 @@ let survival_rules = {
 }
 
 let backendTable = [];
-let h = 50;
-let w = 50;
+let h = 51;
+let w = 51;
 let wallChance = 0.5;
 
 for (let i = 0; i < h; i++) {
