@@ -14,12 +14,26 @@ input {
 }
 
 #inputs {
-    position: absolute;
+    position: fixed;
     
-    top: 0%;
-    left: 80.5%;
+    top: 5%;
+    left: 80%;
 
     width: 19%;
+}
+
+#tap-progress {
+    position: fixed;
+
+    top: 45%;
+    left: 81%;
+
+    width: 17%;
+
+    background-color: lightblue;
+    text-align: center;
+
+    display: none;
 }
 
 #cell-table {
