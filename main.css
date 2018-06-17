@@ -49,11 +49,11 @@ table {
 #cell-table {
     width: 80%;
     height: 100%;
+    table-layout: fixed;
 }
 
 .cell {
     background-color: #474d69;
-    
     cursor: pointer;
     border: 1px solid #202640;
 }
