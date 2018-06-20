@@ -20,7 +20,7 @@ input {
 }
 
 table {
-    border-collapse: collapse;
+    
 }
 
 #inputs {
@@ -47,6 +47,8 @@ table {
 }
 
 #cell-table {
+    border-collapse: collapse;
+    
     width: 80%;
     height: 100%;
     table-layout: fixed;
@@ -55,5 +57,20 @@ table {
 .cell {
     background-color: #474d69;
     cursor: pointer;
-    border: 1px solid #202640;
+    border: 0.1em solid #202640;
+}
+
+td {
+    text-align: center;
+}
+
+.checkbox-input {
+    margin-left: 6%;
+}
+
+.input-cell {
+    padding-top: 1px;
+    padding-bottom: 20px;
+
+    border: 1px solid red;
 }
