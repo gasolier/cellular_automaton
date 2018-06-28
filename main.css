@@ -25,11 +25,13 @@ table {
 
 #inputs {
     position: fixed;
+    z-index: 1;
     
     top: 0.25%;
     left: 80%;
 
     width: 19%;
+    background-color: #dfdfdf;
 }
 
 #tap-progress {
@@ -47,15 +49,23 @@ table {
 }
 
 #cell-table {
+    position: absolute;
     border-collapse: collapse;
     
     width: 80%;
     height: 100%;
+    
     table-layout: fixed;
 }
 
-.cell {
+.dead-cell {
     background-color: #474d69;
+    cursor: pointer;
+    border: 0.1em solid #202640;
+}
+
+.live-cell {    
+    background-color: #f2784e;
     cursor: pointer;
     border: 0.1em solid #202640;
 }
